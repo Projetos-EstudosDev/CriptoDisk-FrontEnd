@@ -1,7 +1,14 @@
-import react from 'react';
+import react, {useState} from 'react';
 
 const Login = () => {
 
+    const [username, setUserName] = useState();
+    const [password, setPassword] = useState();
+
+    const logindata = [
+        username,
+        password
+    ]
 
     return(
         <div>
@@ -12,12 +19,16 @@ const Login = () => {
                     <input
                     type='text'
                     placeholder='Insira seu username'
+                    value={username}
+                    onChange={(e) => setUserName (e.target.value)}
                     required />
                     <br/>
                     <br/>
                     <input
                     type='password'
                     placeholder='Insira sua password'
+                    value={password}
+                    onChange={(e) => setPassword (e.target.value)}
                     required />
                     <br/>
                     <br/>
