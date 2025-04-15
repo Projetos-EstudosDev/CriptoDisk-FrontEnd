@@ -1,14 +1,17 @@
 import react, {useState} from 'react';
+import axios from 'axios';
 
 const Login = () => {
 
     const [username, setUserName] = useState();
-    const [password, setPassword] = useState();
+    const [senha, setSenha] = useState();
 
     const logindata = [
         username,
-        password
+        senha
     ]
+
+    // const url = axios.post("",logindata)
 
     return(
         <div>
@@ -27,8 +30,8 @@ const Login = () => {
                     <input
                     type='password'
                     placeholder='Insira sua password'
-                    value={password}
-                    onChange={(e) => setPassword (e.target.value)}
+                    value={senha}
+                    onChange={(e) => setSenha (e.target.value)}
                     required />
                     <br/>
                     <br/>
