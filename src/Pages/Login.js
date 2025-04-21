@@ -1,8 +1,12 @@
 import react, {useState} from 'react';
 import axios from 'axios';
+import { useNavigate,Link } from 'react-router-dom';
+import Cadastros from './Cadastro';
 
 const Login = () => {
-
+    const nav = useNavigate();
+   
+    
     const [username, setUserName] = useState();
     const [senha, setSenha] = useState();
 
@@ -38,7 +42,9 @@ const Login = () => {
                     <button type='submit' className='btb-Login'>Logar</button>
                 </form>
                 <br/>
-                <h5 >Criar sua conta</h5>
+                <Link to="/Cadastro">
+                    <h5>Crie sua conta</h5>
+                </Link>
             </section>
         </div>
     )

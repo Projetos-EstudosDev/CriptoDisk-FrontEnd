@@ -1,25 +1,41 @@
 import react, {useState} from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Cadastros = () => {
+    
+    const nav = useNavigate()
     const [nome, setNome] = useState();
     const [username, setUserName] = useState();
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
-
-    const cadastrodata = [
-        nome,
-        username,
-        email,
-        senha
-
-    ]
+    
+    const url = "https://localhost:7267/api/Auth/Cadastro";
+    const cadastro = (event) => {
+        event.preventDefault()
+        const cadastrodata = {
+            nome,
+            username,
+            email,
+            senha
+        }
+        
+        axios.post(url,cadastrodata).then((result) => {
+            alert(result.data)
+            nav("/")
+        }).catch((error)=> {
+            alert(error);
+        }) 
+        
+    }
     
     return (
         <div>
             <section className="Sect-Cadastro"> 
             <h3>Faça seu cadastro</h3>
-            <form className='formCadastro'>
-
+            <form className='formCadastro' onSubmit={cadastro}>
                 <input
                 type='text'
                 placeholder='insira seu nome...'
@@ -49,9 +65,11 @@ const Cadastros = () => {
                 required />
                 <br>
                 </br>
-                <button type='submit' className='btb-Login'>Criar Conta</button>
+                    <button type='submit' className='btb-Login'>Criar Conta</button>
             </form>
             </section>
         </div>
     )
 }
+
+export default Cadastros;
