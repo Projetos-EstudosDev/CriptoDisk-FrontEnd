@@ -23,7 +23,7 @@ const Login = () => {
                 <h3>Acesse sua conta</h3>
                 <form className='FormLogin'>
                     
-                    <input
+                <input
                     type='text'
                     placeholder='Insira seu username'
                     value={username}

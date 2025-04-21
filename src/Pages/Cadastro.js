@@ -67,6 +67,8 @@ const Cadastros = () => {
                 </br>
                     <button type='submit' className='btb-Login'>Criar Conta</button>
             </form>
+            <br/>
+            <button onClick={() => nav("/")}> Retornar ao Login</button>
             </section>
         </div>
     )
