@@ -1,27 +1,37 @@
 import react, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
-import Cadastros from './Cadastro';
+
 
 const Login = () => {
-    const nav = useNavigate();
-   
     
+    const nav = useNavigate();
     const [username, setUserName] = useState();
     const [senha, setSenha] = useState();
+    
+    const URL = "https://localhost:7267/api/Auth/Login"
 
-    const logindata = [
-        username,
-        senha
-    ]
+    const login = (event) => {
+        event.preventDefault()
+            const logindata = {
+                username,
+                senha
+            }
 
-    // const url = axios.post("",logindata)
-
+            axios.post(URL,logindata).then((result) => {
+                alert(result.data)
+               
+                nav("/Chat")
+            }).catch((error)=> {
+                alert(error)
+            }) 
+    }
+   
     return(
         <div>
             <section className="Sect-Login">
                 <h3>Acesse sua conta</h3>
-                <form className='FormLogin'>
+                <form className='FormLogin' onSubmit={login}>
                     
                 <input
                     type='text'
@@ -48,5 +58,7 @@ const Login = () => {
             </section>
         </div>
     )
+    
 }
+
 export default Login;
