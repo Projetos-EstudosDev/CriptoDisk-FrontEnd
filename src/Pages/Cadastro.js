@@ -12,7 +12,7 @@ const Cadastros = () => {
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     
-    const url = "https://localhost:7267/api/Auth/Cadastro";
+    const url = "http://localhost:5144/api/Auth/CreateAccount";
     const cadastro = (event) => {
         event.preventDefault()
         const cadastrodata = {
@@ -23,7 +23,7 @@ const Cadastros = () => {
         }
         
         axios.post(url,cadastrodata).then((result) => {
-            alert(result.data)
+            alert("Usuario criado com sucesso")
             nav("/")
         }).catch((error)=> {
             alert(error);
