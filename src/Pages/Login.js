@@ -2,14 +2,25 @@ import react, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 
+const DadosLogin = () => {
+    const [username, setUsername] = useState('');
+    const [senha, setSenha] = useState('');
+
+    return {
+        username,
+        setUsername,
+        senha,
+        setSenha,
+    };
+};
 
 const Login = () => {
     
     const nav = useNavigate();
-    const [username, setUserName] = useState();
-    const [senha, setSenha] = useState();
+    const { username, setUserName, senha, setSenha } = DadosLogin();
+   
     
-    const URL = "https://localhost:7267/api/Auth/Login"
+    const URL = "http://localhost:5144/api/Auth/Login"
 
     const login = (event) => {
         event.preventDefault()
@@ -19,11 +30,10 @@ const Login = () => {
             }
 
             axios.post(URL,logindata).then((result) => {
-                alert(result.data)
-               
+                
                 nav("/Chat")
             }).catch((error)=> {
-                alert(error)
+                alert("Dados invalidos, Usuario ou senha incorretos")
             }) 
     }
    
@@ -61,4 +71,4 @@ const Login = () => {
     
 }
 
-export default Login;
+export default {  DadosLogin, Login }
