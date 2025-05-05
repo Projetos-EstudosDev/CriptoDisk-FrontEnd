@@ -2,22 +2,14 @@ import react, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
 
-const DadosLogin = () => {
-    const [username, setUsername] = useState('');
-    const [senha, setSenha] = useState('');
 
-    return {
-        username,
-        setUsername,
-        senha,
-        setSenha,
-    };
-};
 
 const Login = () => {
     
+    const [username, setUsername] = useState('');
+    const [senha, setSenha] = useState('');
     const nav = useNavigate();
-    const { username, setUserName, senha, setSenha } = DadosLogin();
+
    
     
     const URL = "http://localhost:5144/api/Auth/Login"
@@ -30,7 +22,7 @@ const Login = () => {
             }
 
             axios.post(URL,logindata).then((result) => {
-                
+                localStorage.setItem("username",username)
                 nav("/Chat")
             }).catch((error)=> {
                 alert("Dados invalidos, Usuario ou senha incorretos")
@@ -42,12 +34,11 @@ const Login = () => {
             <section className="Sect-Login">
                 <h3>Acesse sua conta</h3>
                 <form className='FormLogin' onSubmit={login}>
-                    
                 <input
                     type='text'
                     placeholder='Insira seu username'
                     value={username}
-                    onChange={(e) => setUserName (e.target.value)}
+                    onChange={(e) => setUsername (e.target.value)}
                     required />
                     <br/>
                     <br/>
@@ -71,4 +62,4 @@ const Login = () => {
     
 }
 
-export default {  DadosLogin, Login }
+export default Login
