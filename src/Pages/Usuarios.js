@@ -4,15 +4,9 @@ import axios from "axios"
 const Usuarios = () => {
     
     const [user,setUser] = useState([])
-    const [usuario, setUsuario] = useState("")
-    const [mensagem, setMensagem] = useState([])
-    const [novamsg, setNovaMsg] = useState("")
-    const username = localStorage.getItem("username")
-    
-    const ws = useRef(null)
     useEffect(() => {
               const getuser = () => {
-                axios.get("http://localhost:5144/api/Auth/GetUsuarios")
+                axios.get("https://criptodiskback-gweqafd5aehbfybm.brazilsouth-01.azurewebsites.net/api/Auth/GetUsuarios")
                 .then((Response) => {
                   setUser(Response.data)
                 }).catch((err) => {
@@ -21,34 +15,6 @@ const Usuarios = () => {
               }
               getuser()
             }, [])
-            
-useEffect(() => {
-    const click = () => {
-        
-      ws.current = new WebSocket("ws://localhost:5144/ws")
-  
-      ws.current.onopen = () => console.log("ws aberto");
-      ws.current.onclose = () => console.log("ws fechado");
-      ws.current.onmessage = (event) => {
-        const mensagemNova = event.data 
-        setMensagem((prevMessages) => [...prevMessages, mensagemNova]);
-      };
-  
-      return () => {
-        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-          ws.current.close();
-        }
-      };
-    }
-    
-        const enviarmsg = (event) => {
-            event.preventDefault()
-          const msg = `${username}: ${novamsg}`
-          ws.current.send(msg)
-          setNovaMsg("")
-        };
-}, []);
-
 
     return(
         <div>

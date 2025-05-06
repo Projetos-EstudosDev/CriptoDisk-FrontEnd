@@ -9,7 +9,7 @@ const TelaChat = () => {
     const ws = useRef(null)
 
     useEffect(() => {
-      ws.current = new WebSocket("ws://localhost:5144/ws")
+      ws.current = new WebSocket("ws://criptodiskback-gweqafd5aehbfybm.brazilsouth-01.azurewebsites.net/ws")
   
       ws.current.onopen = () => console.log("ws aberto");
       ws.current.onclose = () => console.log("ws fechado");

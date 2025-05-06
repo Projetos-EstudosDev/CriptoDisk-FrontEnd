@@ -12,7 +12,7 @@ const Cadastros = () => {
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     
-    const url = "http://localhost:5144/api/Auth/CreateAccount";
+    const url = "https://criptodiskback-gweqafd5aehbfybm.brazilsouth-01.azurewebsites.net/api/Auth/CreateAccount";
     const cadastro = (event) => {
         event.preventDefault()
         const cadastrodata = {

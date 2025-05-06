@@ -12,7 +12,7 @@ const Login = () => {
 
    
     
-    const URL = "http://localhost:5144/api/Auth/Login"
+    const URL = "https://criptodiskback-gweqafd5aehbfybm.brazilsouth-01.azurewebsites.net/api/Auth/Login"
 
     const login = (event) => {
         event.preventDefault()
